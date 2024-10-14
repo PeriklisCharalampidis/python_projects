@@ -303,4 +303,3 @@ operand2 = get_number(2)
 sign = input("Sign: ")
 
 
-
