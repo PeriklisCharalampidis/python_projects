@@ -1,0 +1,306 @@
+Text bases calculator with python.
+I wanna prompt the user to able to type in number and add, subtract, etc.
+We wanna parse an expression.
+Focused on arithimic.
+
+Division always returns float
+
+** is exponent or power of
+
+Module is % example
+4 % 3 => 3 divides into 4 ONE time, the remainder is 1.
+
+3 / 0 is gonna return an error.
+
+Tip
+B E D M A S
+Brackets
+exponent
+Division
+Multiplication 
+Addition
+Subtraction
+
+We cant add operand and operand2 cause they are STRINGS so
+I need to convert then into number INT.
+Still this is gonna throw an error so if we use any float number
+therefore I am converting the strings to FLOAT
+
+
+In order to avoid error float division by 0:
+I will create an if statment that if the input is 0 an automated message will be printed.
+
+SUPER BASE VERSION
+
+operand = input("Number 1: ")
+operand2 = input("Number 2: ")
+sign = input("Sign: ")
+
+if sign == "+":
+    result = float(operand) + float(operand2)
+elif sign == "-":
+        result = float(operand) - float(operand2)
+elif sign == "/":
+        if float(operand2) != 0: 
+            result = float(operand) / float(operand2)
+        else:
+              print("Divison by zero")
+elif sign == "*":
+        result = float(operand) * float(operand2)
+
+print(result)
+
+To avoid getting an error message that result is undifined. Cause of the if statment, to solve this I am 
+assigning result a value of 0 at the top of the code block
+
+Next I need to make sure that the operands input are indeed numbers.
+
+New python concept from this project.
+try: except:
+
+Since i am using the try: except: logic I dont have to convert my operands into floats 
+inside the if statments!
+
+
+Number 1: hello1
+Number 2: 2
+Sign: +
+Invalid operands
+hello12
+
+This happens cause it takes the operand strings adds them and then trows the error.
+To fix this I can simply put the entire logic inside the try: block OR
+I can create a <FLAG> :
+
+valid = False
+try:
+      operand = float(operand)
+      operand2 = float(operand2)
+      valid = True
+except:
+      print("Invalid operands")
+if valid:
+    result = 0
+    if sign == "+":
+        result = operand + operand2
+    elif sign == "-":
+            result = operand - operand2
+    elif sign == "/":
+            if operand2 != 0: 
+                result = operand / operand2
+            else:
+                print("Divison by zero")
+    elif sign == "*":
+            result = operand * operand2
+
+print(result)
+
+So if none of the  operand = float(operand)
+      operand2 = float(operand2) work i never reach valid = True.
+
+      except:
+      print("Invalid operands")
+
+Version 2
+
+operand = input("Number 1: ")
+operand2 = input("Number 2: ")
+sign = input("Sign: ")
+
+valid = False
+try:
+      operand = float(operand)
+      operand2 = float(operand2)
+      valid = True
+except:
+      print("Invalid operands.")
+      
+if valid:
+    result = 0
+    if sign == "+":
+        result = operand + operand2
+    elif sign == "-":
+            result = operand - operand2
+    elif sign == "/":
+            if operand2 != 0: 
+                result = operand / operand2
+            else:
+                print("Divison by zero")
+    elif sign == "*":
+            result = operand * operand2
+
+    print(result)
+
+In the next Version of this calculator I will be using a while loop.
+
+i = 0
+while i < 10:
+      print(i)
+      i += 1 
+
+Once i loops 10 times i = 9 and the loop will stop .
+
+Keywords that affect while loops:
+
+break: While the break keyword is encounter it immediately exits the loop.
+This is importand to get out of infinet loops.
+
+continue: The continue keyword GOES to the Top of the loop
+i = 0 
+    while i < 10:
+    print(i)
+    i += 2
+    continue
+    print("run")
+
+In this code block the string run will never be printed cause of the continue keyword,
+and I am forcing the loop back on the top!
+
+
+
+while True:
+    operand = input("Number 1: ")
+    try:
+        operand = float(operand)
+        break
+    except:
+          print("Invalid input please try again.")
+
+In this code block we ask the user for an input, and we ATTEMPT to convert the input into float,
+if the input is converted to float we BREAK the while loop.
+
+If the input is not able to be converted into float we print("Invalid input please try again.")
+And go back at the top of the loop.Cause of the except keyword.
+
+
+
+
+while True:
+    operand = input("Number 1: ")
+    try:
+        operand = float(operand)
+        break
+    except:
+          print("Invalid input please try again.")
+
+while True:          
+    operand2 = input("Number 2: ")
+    try:
+        operand2 = float(operand2)
+        break
+    except:
+          print("Invalid input please try again.")
+
+sign = input("Sign: ")
+
+
+result = 0
+if sign == "+":
+    result = operand + operand2 
+elif sign == "-":
+        result = operand - operand2
+elif sign == "/":
+        if operand2 != 0: 
+            result = operand / operand2
+        else:
+            print("Divison by zero")
+elif sign == "*":
+        result = operand * operand2
+else:
+     print("Invalid sign.")
+
+print(result)
+
+
+Version 3
+
+In this version of the calculator I will implement a function, since I am repeating the same wile loop
+TWICE and this is BAD practice!
+
+def get_number():
+    while True:          
+        operand = input("Number 2: ")
+        try:
+            operand = float(operand)
+            break
+        except:
+          print("Invalid input please try again.")
+
+    return operand
+
+x = get_number()
+
+This function is Callable means I can run it as many times as I want by just simply
+writing the name of the function
+
+The return keyword allows me to give something out of the function!
+We dont need to return something.
+
+In this case I want to get a Number and that Number is stored in operand variable.
+So we return operand to get the value that was given by the user.
+
+As soon as that return statment is reached, the function immediately exits and it returns whatever
+we put after the return keyword to whomever called the function.
+
+Since I am using the return keyword I dont need the break !
+
+def get_number():
+    while True:          
+        operand = input("Number 2: ")
+        try:
+            return float(operand)
+        except:
+          print("Invalid input please try again.")
+
+The reason this works is, cause as soon as the return keyword is encounter the function ends
+and when the function ends the while loop will also end as well.
+
+def get_number():
+    while True:          
+        operand = input("Number 1: ") <---
+        try:
+            return float(operand)
+        except:
+          print("Invalid input please try again.")
+
+
+operand = get_number()
+operand2 = get_number()
+sign = input("Sign: ")
+
+Here the problem is i am printing on the terminal Number 1 twice and I dont want that!
+
+Therefore I am intoducing parameters for my function.
+That means I can pass a value to my function and that function can use that value.
+
+def get_number(number):    <----- (parameter)
+    while True:          
+        operand = input("Number 1: ")
+        try:
+            return float(operand)
+        except:
+          print("Invalid input please try again.")
+
+
+operand = get_number(1) <---    (argument)
+operand2 = get_number(2)  <---- (argument)
+sign = input("Sign: ")
+
+The last thing I wanna do is make sure that the input prompt shows which operand is called.
+I need to make sure when I concatinate  the number parameter is convert to the string value of the  number!
+
+def get_number(number):
+    while True:          
+        operand = input("Number" + str(number) + ":" )
+        try:
+            return float(operand)
+        except:
+          print("Invalid input please try again.")
+
+
+operand = get_number(1)
+operand2 = get_number(2)
+sign = input("Sign: ")
+
+
+
