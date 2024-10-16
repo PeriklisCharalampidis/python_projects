@@ -1,0 +1,353 @@
+This project is a contact management list/app system.
+I'll be collecting the user's name, age, email, etc.
+The data will be stored in a place where I can search through or manage it.
+Add, Delete, Edit → CRUD
+
+In this project, I'll be using a for loop.
+
+A for loop is a control flow statement used for specifying iteration.
+Iterations are loops!   
+
+for i in range(11, 1, -2):
+    print(i)
+The number 2 is the step, which determines the increment by which we move up.
+
+In General USE the for loop when you know exactly how many times you want to iterate.
+Whereas you USE the while loop when you are not realy sure.
+The Keywords break and continue work exactly in a for loop as in a while loop.
+
+The second focus of this project is going to be lists.
+
+"List" is a collection of elements in a particular order.
+
+numbers = [1, 2, 3, 4, 5]
+print(numbers[0])
+
+Here I have a list with 5 elements or items.
+The length of the list is 5
+but the indexs of this list is from 0-4.
+The indexs point out the position the item has inside the list and the first position
+is always 0.
+
+numbers = [1, 2, 3, 4, 5]
+print(numbers[-1])
+
+Here we are the first item from the end.
+
+numbers = [1, 2, 3, 4, 5]
+print(numbers[len(numbers) - 1])
+
+METHODS to be aware of!
+
+"List append() Method" -> ADDS an ITEM at the end of the LIST.
+
+numbers = [1, 2, 3, 4, 5]
+numbers.append(10)
+print(numbers)
+
+Whats gonna happen here is that the number 10 is going to be
+added at the end of the list.
+[1, 2, 3, 4, 5, 10]
+
+This is important cause I can start a list empty and then add items to it.
+
+Next is "List pop() Method" -> REMOVES an ITEM from a LIST 
+based on the index that was passed inside the function.
+
+Using this function we can pass the index of an item inside 
+a list and it will be removed.
+
+numbers = [1, 2, 3, 4, 5]
+numbers.pop(2)
+print(numbers)
+
+[1, 2, 4, 5]
+
+len() is also an important function here which returns or get you the length of the list.
+
+Next I'll focus how I can iterate over a list. LOOPING BY ITEM
+To go over all the items inside a list I'll use a for loop
+fruits = ["apples", "pears", "bananas", "watermelons "]
+for fruit in fruits:
+    print(fruit)
+
+apples
+pears
+bananas
+watermelons 
+
+Note that fruit can be anything I use it for conventions reason, but this can be i,x,y etc.
+
+An other way to do this is as follows:LOOPING BY INDEX
+
+fruits = ["apples", "pears", "bananas", "watermelons "]
+for i in range(len(fruits)):
+    fruit = fruits[i]
+    print(i)
+
+apples
+pears
+bananas
+watermelons 
+
+When I put the length of fruits this means "i" is goint to go up to BUT not INCLUDE
+the last elements or simply the length of this list.
+So "i" is gonna be 0,1,2,3. And the length of this list is 4.
+
+I start simple here.
+By asking name, age, email, using input storing them inside the variables.
+Then I created empty list where I am gonna pass the users information
+using the .append() method.
+
+names = []
+ages = []
+emails = []
+
+name = input("Name: ")
+age = input("Age: ")
+email = input("Email: ")
+
+names.append(name)
+ages.append(age)
+emails.append(email)
+
+print(names, ages, emails)
+
+Name: periklis
+Age: 32 
+Email: something@whatever.com
+['periklis'] ['32'] ['something@whatever.com']
+
+But in lists I want to be passing multiple inputs therefore
+ill start with a for loop.
+
+names = []
+ages = []
+emails = []
+for i in range(3):
+    print(i + 1, "Input") 
+#This print i + 1 its just gonna tells us which input we are currently on.
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    names.append(name)
+    ages.append(age)
+    emails.append(email)
+
+print(names, ages, emails)
+
+1 Input
+Name: Periklis
+Age: 34
+Email: dfasf@dfsdf
+2 Input
+Name: Tom
+Age: 32
+Email: dsfsaf@iiiii
+3 Input
+Name: John
+Age: 4
+Email: john@jhon 
+['Periklis', 'Tom', 'John'] ['34', '32', '4'] ['dfasf@dfsdf', 'dsfsaf@iiiii', 'john@jhon']
+
+The for loop while stop once "i" reaches the range of 2 
+so we get 3 input 0,1,2
+
+Next I will make this better cause in order to access any data of a user I 
+have to go over three different lists so let me fix this.
+
+Here I am getting introduced to a new concept in Python called "DICTIONARY".
+
+Dictionary is a KEY VAlUE PAIR
+It allows me to associate something like a name with a name... xD
+
+d = {} --> Dictionary
+d["key"] = value
+d["name"] = "Tom"
+
+---------------
+people = []
+
+for i in range(3):
+    print(i + 1, "Input")
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    person = {
+        "name": name,
+        "age": age,
+        "email": email,
+    }
+    people.append(person)
+
+print(people)
+
+So I am creating a Dictionary --> Dictionary (person) allows me to have keys associate with values.
+And then I can add that Dictionary as an element in my list(people).
+
+Name: John
+Age: 22
+Email: jophn@john
+2 Input
+Name: Tim
+Age: 55
+Email: tim@tim
+3 Input
+Name: mary
+Age: 5
+Email: mary@mary
+[{'name': 'John', 'age': '22', 'email': 'jophn@john'}, {'name': 'Tim', 'age': '55', 'email': 'tim@tim'}, {'name': 'mary', 'age': '5', 'email': 'mary@mary'}]
+
+----------
+This looks a lot better now I want to add some functionality to this system.
+-ability to add someone
+-ability to delete someone
+-ability to search for someone/thing
+
+I'll start by making my add fuction.
+
+def add_person():
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    person = {"name": name,"age": age,"email": email,}
+    return person
+
+def delete_person():
+    pass
+
+
+print("Welcome to the Contact Managment System.")
+print()
+while True:
+    command = input("You can 'Add', 'Delete' or 'Search' and 'Q' to quit: ").lower()
+    people = []
+    if command == "add":
+        person = add_person()
+        people.append(person)
+        print("Person added!")
+    elif command == 'delete':
+        pass
+    elif command == "search":
+        pass
+    elif command == "q":
+        break
+    else:
+        print("Invalid command.")
+
+    print(people)
+
+At this point I want to be able to list all my different contexts that I have 
+with a number beside them.
+
+Also a quick explanation how my delete_contact fuction is going to work.
+I'll pass as a parameter the people list inside my delete_contact(people) function.
+And I'll use the enumarate fuction.
+------------
+"enumarate" gives me the index as well as the element for every single element inside the list.
+So in my case is going to give me each person inside my list as well as the position they are in.
+So I can print out the number and then the person.
+
+def delete_contact(people):
+    for i, person in enumerate(people):
+        print(i + 1, "-", person["name"], "|", person["age"], "|", person["email"] )
+
+#The reason I say i + 1 is cause I dont want to start counting at 0
+This code block alone still does not delete the contact it just prints out added or existing contacts inside the people list.
+Next I will ask the user to choose a number that this assigned to an item inside the list and then pop that item.
+This means I ll have to convert the input into a number.
+
+    while True:
+    #I need to keep asking for an input till is valide that is why I put the while loop.
+        number = input("Enter a number to delete: ")
+        try:
+            number = int(number)   <--- string convert
+            if number <= 0 or number > len(people): <-- I am checking if the input is less/equal to 0 or the input is greater than the actual
+            ----> length of list which are both invalid . 
+                print("Invalid number, out of range")
+            else:
+                break
+        except:
+            print("Invalide number.")
+
+So at this point in order for us to delete everything needs to be valid which means the loop will break and I'll have a input from the user
+stored in the variable number!
+
+people.pop(number - 1) <--- The reason we number - 1 is cause the pop fuction takes the index of the item inside the list.
+so if the user wants to delete the first item which through enumarate will have the number 1, but inside the list the first item has the 
+index of 0!
+
+SOS this is part of a bigger toppic but even though I am modiftying the list inside my fuction it also changes the list outside of it!!!
+mutable property <----
+
+I get stuck inside the the remove_contact fuction If I delete every Item in the list, so I'll have to check it the list is empty
+and print a message to the user to add or q?
+
+Completed delete_contact fuction.
+
+def delete_contact(people):
+    for i, person in enumerate(people):
+        print(i + 1, "-", person["name"], "|", person["age"], "|", person["email"] )
+        #The reason I say i + 1 is cause I dont want to start counting at 0 KINDA OFF!
+
+    while True:
+    #I need to keep asking for an input till is valide that is why I put the while loop.
+        number = input("Enter a number to delete: ")
+        try:
+            number = int(number)
+            if number <= 0 or number > len(people):
+                print("Invalid number, out of range.")
+            else:
+                break
+        except:
+            print("Invalide input.")
+    people.pop(number - 1)
+
+----------------
+
+"search function"
+
+This fuction is gonna try to match the input the user typed in with the items inside the people list.
+
+def search(people):
+    search_name = input("Search for a name: ").lower()
+    result = []
+
+    for person in people:
+        name = person["name"]
+        if search_name in name.lower():
+#Here I am checking if the string that is passed in the input value can be found inside name: which I assigned to be the key pair value inside my
+#person dictionary
+#So if there is a match take this item and add it to my result empty list
+            result.append(person)
+
+Now I want to display the people list which I have already implimented in the remove_contact fuction.
+
+def display_people(people):
+    for i, person in enumerate(people):
+        print(i + 1, "-", person["name"], "|", person["age"], "|", person["email"] )
+-----------
+
+Now i can replace this part of code with a simple fuction INSIDE my remove_contact fuction!
+Then I am also going to pass the same fuction again in my search fuction but instead of people I'll pass result
+
+def search(people):
+    search_name = input("Search for a name: ").lower()
+    result = []
+
+    for person in people:
+        name = person["name"]
+        if search_name in name.lower():
+            result.append(person)
+    display_people(result)  <------
+
+Now that all my fuctionality is in I want to make sure I get to Save all those contacts in a text file so they dont instantly get deleted once I 
+stop the program!
+"json" <--- javascript object notation
+json allows me to save objects(similar to dictionaries*) in a file.
+First I need to created the file where I can store the obj.
+I create an object which is an empty list {"contacts": []}
+
