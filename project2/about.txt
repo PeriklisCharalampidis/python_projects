@@ -1,7 +1,7 @@
 This project is a contact management list/app system.
 I'll be collecting the user's name, age, email, etc.
 The data will be stored in a place where I can search through or manage it.
-Add, Delete, Edit → CRUD
+Add, Delete, Edit 
 
 In this project, I'll be using a for loop.
 
