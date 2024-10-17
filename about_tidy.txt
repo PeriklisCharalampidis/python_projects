@@ -1,0 +1,166 @@
+Contact Management System Project
+This project is a contact management app where I'll collect and manage user information like name, age, email, etc. The data will be stored in a place where I can search, add, delete, and edit it.
+
+Using a for Loop
+A for loop is a control flow statement for specifying iteration. Iterations are loops!
+
+Example:
+
+python
+Copy code
+for i in range(11, 1, -2):
+    print(i)
+In this case, the number 2 is the step, which determines the increment (or decrement) by which we move.
+
+General rule: Use a for loop when you know exactly how many times you want to iterate. Use a while loop when you're unsure of the number of iterations. The keywords break and continue work the same in both for and while loops.
+
+Lists in Python
+A list is a collection of elements in a particular order.
+
+Example:
+
+python
+Copy code
+numbers = [1, 2, 3, 4, 5]
+print(numbers[0])  # Outputs: 1
+Here, I have a list with 5 elements. The length of the list is 5, but the indices of the list range from 0 to 4. The first item is always at index 0.
+
+To get the last item:
+
+python
+Copy code
+print(numbers[-1])  # Outputs: 5
+Another way to get the last item is:
+
+python
+Copy code
+print(numbers[len(numbers) - 1])  # Outputs: 5
+Useful List Methods
+append() Method – Adds an item to the end of the list.
+python
+Copy code
+numbers = [1, 2, 3, 4, 5]
+numbers.append(10)
+print(numbers)  # Outputs: [1, 2, 3, 4, 5, 10]
+pop() Method – Removes an item from the list by index.
+python
+Copy code
+numbers = [1, 2, 3, 4, 5]
+numbers.pop(2)
+print(numbers)  # Outputs: [1, 2, 4, 5]
+len() function – Returns the length of the list.
+Iterating Over a List
+Looping by Item:
+python
+Copy code
+fruits = ["apples", "pears", "bananas", "watermelons"]
+for fruit in fruits:
+    print(fruit)
+Looping by Index:
+python
+Copy code
+for i in range(len(fruits)):
+    print(fruits[i])
+In this example, i will go from 0 to the length of the list minus 1.
+
+Collecting User Input with a for Loop
+Example of collecting user data:
+
+python
+Copy code
+names = []
+ages = []
+emails = []
+
+for i in range(3):
+    print(i + 1, "Input")
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    names.append(name)
+    ages.append(age)
+    emails.append(email)
+
+print(names, ages, emails)
+Using Dictionaries
+A dictionary is a key-value pair structure that allows me to associate names with values.
+
+Example:
+
+python
+Copy code
+person = {"name": "Tom", "age": "32", "email": "tom@example.com"}
+A better way to store user data is by using dictionaries inside a list:
+
+python
+Copy code
+people = []
+
+for i in range(3):
+    print(i + 1, "Input")
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    person = {"name": name, "age": age, "email": email}
+    people.append(person)
+
+print(people)
+Adding, Deleting, and Searching
+Add a Contact:
+python
+Copy code
+def add_person():
+    name = input("Name: ")
+    age = input("Age: ")
+    email = input("Email: ")
+
+    return {"name": name, "age": age, "email": email}
+Delete a Contact:
+python
+Copy code
+def delete_contact(people):
+    for i, person in enumerate(people):
+        print(f"{i + 1} - {person['name']} | {person['age']} | {person['email']}")
+
+    while True:
+        number = input("Enter a number to delete: ")
+        try:
+            number = int(number)
+            if 0 < number <= len(people):
+                break
+            else:
+                print("Invalid number, out of range.")
+        except:
+            print("Invalid input.")
+    
+    people.pop(number - 1)
+Search for a Contact:
+python
+Copy code
+def search(people):
+    search_name = input("Search for a name: ").lower()
+    result = [person for person in people if search_name in person["name"].lower()]
+    
+    display_people(result)
+Display Contacts:
+python
+Copy code
+def display_people(people):
+    for i, person in enumerate(people):
+        print(f"{i + 1} - {person['name']} | {person['age']} | {person['email']}")
+Saving Contacts with JSON
+To save contacts to a file using JSON:
+
+python
+Copy code
+import json
+
+with open("contacts.json", "r") as f:
+    people = json.load(f)["contacts"]
+
+# Save the data when quitting
+with open("contacts.json", "w") as f:
+    json.dump({"contacts": people}, f)
+Make sure to handle file-related errors, and remember that the structure {"contacts": []} should be maintained when working with the JSON file.
