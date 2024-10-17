@@ -351,3 +351,51 @@ json allows me to save objects(similar to dictionaries*) in a file.
 First I need to created the file where I can store the obj.
 I create an object which is an empty list {"contacts": []}
 
+This line of code is used to read a JSON file named contacts.json and extract a specific part of its content. <-1
+This statement opens the file contacts.json in read mode ("r" stands for read-only mode) and assigns the file object to the variable f.<-1
+with open(...) as f: is called a context manager in Python. It is used for opening a file safely and ensures that the file will be properly closed once the block of code inside the with statement is executed, even if an error occurs.
+"contacts.json" is the name of the file to open.
+"r" means that the file is opened in read-only mode. If the file doesn’t exist, this will raise an error.<--1
+
+people = json.load(f)["contacts"]<---2
+This line reads and processes the file contents as follows:
+
+json.load(f) reads the JSON data from the file object f and converts it into a Python dictionary.
+The json module is used for parsing JSON formatted strings into Python objects (like dictionaries and lists).
+["contacts"] is used to access a specific part of the dictionary. In this case, the code is looking for a key named "contacts" in the JSON data.<---2
+
+with open("contacts.json","r") as f:  <-1
+    people = json.load(f)["contacts"] <-2
+
+Now I need a way to save this data 
+In order to do so when the user quits the program. 
+------------------
+
+with open("contacts.json", "w") as f: <--1
+
+open("contacts.json", "w"): Opens a file named contacts.json in write mode ("w"). Write mode means that the
+ file will be created if it doesn't exist, and if it does, its contents will be overwritten.
+as f: The opened file is assigned to the variable f.
+The with statement ensures that the file is automatically closed after the block of code is executed, even if an error occurs. <---1
+
+with open("contacts.json","w") as f: <-----1
+    json.dump(f, {"contacts": people}) <----2
+
+json.dump(f, {"contacts": people}) <--2
+
+json.dump(): This function from the json module is used to serialize (dump) a Python object into a JSON format and write it directly to a file.
+{"contacts": people}: This is the Python dictionary being serialized. 
+It has one key, "contacts", whose value is the people variable (which is assumed to be a list or dictionary of contact information).
+f: The file object f, where the serialized JSON data will be written.<---2
+
+This code writes a dictionary {"contacts": people} in JSON format to the file contacts.json.
+ The file is automatically closed when the with block is finished.
+
+ Object of type TextIOWrapper is not JSON serializable! Error 
+
+ The mistake was I need to pass the content first and then the file.
+
+ with open("contacts.json","w") as f: <-----1
+    json.dump({"contacts": people}, f)
+
+Cause of the Error everything was removed from json file so make sure do add the obj/dictionary again!

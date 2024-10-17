@@ -48,9 +48,6 @@ print()
 with open("contacts.json","r") as f:
     people = json.load(f)["contacts"]
 
-#how to open a file read it and access the key continue here/ With clear understanding
-
-
 
 while True:
     print()
@@ -73,3 +70,6 @@ while True:
         print("Invalid command.")
 
 
+
+with open("contacts.json","w") as f:
+    json.dump({"contacts": people},f)
